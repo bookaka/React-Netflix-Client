@@ -18,6 +18,7 @@ export default function Header(props) {
 }
 const StyledHeader = styled.header`
   padding: 0 6rem;
+  height: 8rem;
   .logo {
     img {
       height: 8rem;
