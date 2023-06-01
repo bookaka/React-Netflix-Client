@@ -3,6 +3,7 @@ import {
     createAsyncThunk,
     createSlice
   } from "@reduxjs/toolkit";
+  import { API_URL } from "../utils/Constants";
   
   import axios from "axios";
   import { API_KEY, TMDB_BASE_URL } from "../utils/Constants";
@@ -69,7 +70,7 @@ import {
     async (email) => {
       const {
         data: { movies },
-      } = await axios.get(`http://localhost:5000/user/liked/${email}`);
+      } = await axios.get(`${API_URL}user/liked/${email}`);
       return movies;
     }
   );
@@ -78,7 +79,7 @@ import {
   async ({ movieId, email }) => {
     const {
       data: { movies },
-    } = await axios.put("http://localhost:5000/user/remove", {
+    } = await axios.put(`${API_URL}user/remove`, {
       email,
       movieId,
     });

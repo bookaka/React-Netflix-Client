@@ -6,6 +6,7 @@ import Header from "../components/Header";
 import { onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
 import { firebaseAuth } from "../utils/firebase-config";
 import axios from "axios";
+import { API_URL } from "../utils/Constants";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -17,7 +18,7 @@ function Login() {
   const handleLogin = async () => {
     try {
       await signInWithEmailAndPassword(firebaseAuth, email, password);
-      await axios.post(`http://localhost:5000/user/create/${email}`)
+      await axios.post(`${API_URL}user/create/${email}`)
     } catch (error) {
       let mes = 'Invalid username or password'
       
